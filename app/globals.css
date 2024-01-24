@@ -1,9 +1,9 @@
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
+    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -87,12 +87,7 @@ body {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: rgb(36, 36, 36);
 }
 
 a {
@@ -104,4 +99,142 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+/* NAVBAR ####################### */
+.navbar {
+  background-color: #141313; /* dark grey */
+  border-bottom: 10px solid #383838; /* slightly darker grey for the border */
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.navbar-link {
+  color: #ffffff;
+  border: 3px solid rgb(59, 59, 59);
+  padding: 15px 20px; /* add some padding to the links */
+  margin-right: 10px;
+  font-weight: 750;
+}
+
+.navbar-list {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+}
+
+.navbar-item-right {
+  margin-left: auto;
+}
+
+/* INDEX PAGE ####################### */
+
+.title {
+  font-size: 32px;
+  text-align: center;
+}
+
+.hero {
+  width: calc(100vw - 100px);
+  height: 650px;
+  background: url("/images/index/11.png") no-repeat center center;
+  background-size: cover;
+  margin: 10px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease-in-out; /* Add this line */
+}
+
+.hero:hover {
+  transform: scale(1.02); /* Add this block */
+}
+
+.hero-title {
+  font-size: 40px; /* Adjust as needed */
+  color: #fff;
+}
+
+.hero-subtitle {
+  font-size: 30px; /* Adjust as needed */
+  color: #fff;
+}
+
+.hero-cta {
+  font-size: 16px; /* Adjust as needed */
+  padding: 10px 20px;
+  margin-top: 20px;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.hero-cta:hover {
+  color: #fff;
+  background-color: #bdb8b8; /* Adjust to the shade of grey you prefer */
+}
+
+.hero-title,
+.hero-subtitle {
+  font-size: 50px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.hero-title:hover,
+.hero-subtitle:hover {
+  transform: translateX(10px);
+}
+
+.section {
+  background-color: #0f0f0f;
+  padding: 20px;
+}
+
+.section-header {
+  text-align: left;
+}
+
+.card {
+  background-color: #4b4a4a;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.footer-text {
+  align-self: flex-start;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-weight: 600;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  margin-bottom: 35px;
+  cursor: pointer;
+}
+
+.footer-link:before {
+  content: "^";
+  position: absolute;
+  left: -20px;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
 }

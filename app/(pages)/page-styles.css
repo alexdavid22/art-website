@@ -1,0 +1,44 @@
+/* DESPRE NOI */
+
+/* page-styles.css */
+.dn-btn-links {
+  padding: 35px 10px;
+  background-color: gray;
+  text-align: center;
+}
+
+.dn-btn-links button {
+  margin-right: 45px;
+  padding: 10px 45px;
+  font-weight: bold;
+}
+
+.dn-disclaimer {
+  padding: 35px 10px;
+  background-color: gray;
+  text-align: center;
+}
+
+/* ImagePainting */
+
+.ImagePainting-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(202, 210, 141);
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 20px;
+  margin-top: 40px;
+  margin-bottom: 80px;
+}
+
+.ImagePainting-imageContainer {
+  width: 95%;
+  position: relative;
+}
+
+.ImagePainting-imageContainer img {
+  border-radius: 20px;
+}
