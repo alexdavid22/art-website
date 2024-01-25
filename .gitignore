@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 .yarn/install-state.gz
-/app/old-code
+/app/oldcode
 
 # testing
 /coverage
