@@ -1,0 +1,23 @@
+.navbar {
+  background-color: #141313; /* dark grey */
+  border-bottom: 10px solid #383838; /* slightly darker grey for the border */
+  border-radius: 10px;
+  padding: 30px;
+  height: 90px;
+}
+
+.navbar-links-left {
+  display: flex;
+  list-style-type: none;
+}
+
+.navbar-link-right .navbar-item {
+  margin-left: auto;
+}
+
+.navbar-link {
+  color: #ffffff;
+  border: 3px solid rgb(59, 59, 59);
+  padding: 15px 20px; /* add some padding to the links */
+  font-weight: 750;
+}

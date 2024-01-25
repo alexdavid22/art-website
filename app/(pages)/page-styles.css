@@ -5,6 +5,12 @@
   padding: 35px 10px;
   background-color: gray;
   text-align: center;
+  margin-top: 90px;
+}
+.dn-btn-links h1 {
+  margin-bottom: 20px;
+  color: rgb(26, 25, 25);
+  font-weight: 900;
 }
 
 .dn-btn-links button {
@@ -41,4 +47,59 @@
 
 .ImagePainting-imageContainer img {
   border-radius: 20px;
+}
+
+/* Sidebar */
+
+.sidebar {
+  height: calc(100vh - 90px);
+  width: 250px;
+  position: fixed;
+  top: 90px;
+  left: 0;
+  background-color: #333;
+  padding: 20px;
+  color: #fff;
+  z-index: 100;
+}
+
+.sidebar-relative {
+  position: relative;
+}
+
+.sidebar h4 {
+  margin-bottom: 10px;
+}
+
+.sidebar input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.sidebar label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.sidebar select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.icon {
+  background-color: #333;
+  font-size: 25px;
+  position: absolute;
+  top: 70%;
+  right: -45px; /* adjust as needed */
+  cursor: pointer;
+  z-index: 120; /* make sure the icon is above the sidebar */
+}
+
+/* Sidebar Animation */
+.sidebar.closed {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
 }
