@@ -10,29 +10,6 @@ const Sidebar = ({
   onPriceChange,
 }) => {
   const [isOpen, setIsOpen] = useState(true)
-  const [searchTerm, setSearchTerm] = useState("")
-  const [size, setSize] = useState("")
-  const [category, setCategory] = useState("")
-  const [price, setPrice] = useState("")
-
-  const handleSearchChange = event => {
-    setSearchTerm(event.target.value)
-    onSearchChange(event.target.value)
-  }
-  const handleSizeChange = event => {
-    setSize(event.target.value)
-    onSizeChange(event.target.value)
-  }
-
-  const handleCategoryChange = event => {
-    setCategory(event.target.value)
-    onCategoryChange(event.target.value)
-  }
-
-  const handlePriceChange = event => {
-    setPrice(event.target.value) // Store the price range as a string
-    onPriceChange(event.target.value) // Pass the price range string up
-  }
 
   return (
     <div className={`sidebar ${isOpen ? "" : "closed"}`}>
@@ -40,57 +17,29 @@ const Sidebar = ({
         <input
           type="text"
           placeholder="Search paintings..."
-          value={searchTerm}
-          onChange={handleSearchChange}
+          onChange={event => onSearchChange(event.target.value)}
         />
 
         <div>
           <h4>Dimensiune</h4>
-          <label>
-            <input
-              type="radio"
-              name="size"
-              value="mic"
-              checked={size === "mic"}
-              onChange={handleSizeChange}
-            />
-            Mic
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="size"
-              value="mic-mediu"
-              checked={size === "mic-mediu"}
-              onChange={handleSizeChange}
-            />
-            Mic-Mediu
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="size"
-              value="mediu"
-              checked={size === "mediu"}
-              onChange={handleSizeChange}
-            />
-            Mediu
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="size"
-              value="mare"
-              checked={size === "mare"}
-              onChange={handleSizeChange}
-            />
-            Mare
-          </label>
+          {/* Size options */}
+          {["mic", "mic-mediu", "mediu", "mare"].map(sizeOption => (
+            <label key={sizeOption}>
+              <input
+                type="radio"
+                name="size"
+                value={sizeOption}
+                onChange={event => onSizeChange(event.target.value)}
+              />
+              {sizeOption.charAt(0).toUpperCase() + sizeOption.slice(1)}
+            </label>
+          ))}
         </div>
 
         <div>
           <h4>Category</h4>
-          <select value={category} onChange={handleCategoryChange}>
+          <select onChange={event => onCategoryChange(event.target.value)}>
+            <option value="">Select a category</option>
             <option value="original">Original</option>
             <option value="reproducere">Reproducere "Interpretata"</option>
             <option value="creatie">Creatie Inspirata</option>
@@ -99,46 +48,18 @@ const Sidebar = ({
 
         <div>
           <h4>Price</h4>
-          <label>
-            <input
-              type="radio"
-              name="price"
-              value="0-1000"
-              checked={price === "0-1000"}
-              onChange={handlePriceChange}
-            />
-            0-1000
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="price"
-              value="1000-2000"
-              checked={price === "1000-2000"}
-              onChange={handlePriceChange}
-            />
-            1000-2000
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="price"
-              value="2000-3500"
-              checked={price === "2000-3500"}
-              onChange={handlePriceChange}
-            />
-            2000-3500
-          </label>
-          <label>
-            <input
-              type="radio"
-              name="price"
-              value="3500+"
-              checked={price === "3500+"}
-              onChange={handlePriceChange}
-            />
-            3500+
-          </label>
+          {/* Price options */}
+          {["0-1000", "1000-2000", "2000-3500", "3500+"].map(priceRange => (
+            <label key={priceRange}>
+              <input
+                type="radio"
+                name="price"
+                value={priceRange}
+                onChange={event => onPriceChange(event.target.value)}
+              />
+              {priceRange}
+            </label>
+          ))}
         </div>
 
         <div className="icon" onClick={() => setIsOpen(!isOpen)}>

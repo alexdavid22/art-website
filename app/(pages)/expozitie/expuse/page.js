@@ -10,26 +10,16 @@ const Page = () => {
   const [size, setSize] = useState("")
   const [category, setCategory] = useState("")
   const [price, setPrice] = useState("")
-  const [filtersApplied, setFiltersApplied] = useState(false)
-
-  const handleFilterChange = (value, filterSetter) => {
-    filterSetter(value)
-    setFiltersApplied(true)
-  }
 
   const filteredPaintings = paintings.filter(painting => {
     let priceFilterPass = true
     if (price) {
       const [minPrice, maxPrice] = price.split("-").map(Number)
-      // If the range has a max value (not Infinity)
-      if (maxPrice) {
-        priceFilterPass =
-          painting.price >= minPrice && painting.price <= maxPrice
-      } else {
-        // Handle the "3500+" case
-        priceFilterPass = painting.price >= minPrice
-      }
+      priceFilterPass = maxPrice
+        ? painting.price >= minPrice && painting.price <= maxPrice
+        : painting.price >= minPrice
     }
+
     return (
       (searchTerm === "" ||
         painting.title.toLowerCase().includes(searchTerm.toLowerCase())) &&
@@ -39,18 +29,15 @@ const Page = () => {
     )
   })
 
-  const paintingsToShow = filtersApplied
-    ? filteredPaintings
-    : filteredPaintings.slice(0, 10)
   return (
     <>
       <Sidebar
-        onSearchChange={value => handleFilterChange(value, setSearchTerm)}
-        onSizeChange={value => handleFilterChange(value, setSize)}
-        onCategoryChange={value => handleFilterChange(value, setCategory)}
-        onPriceChange={value => handleFilterChange(value, setPrice)}
+        onSearchChange={value => setSearchTerm(value)}
+        onSizeChange={value => setSize(value)}
+        onCategoryChange={value => setCategory(value)}
+        onPriceChange={value => setPrice(value)}
       />
-      {paintingsToShow.map(painting => (
+      {filteredPaintings.map(painting => (
         <ImagePainting
           src={painting.image}
           alt={painting.title}
