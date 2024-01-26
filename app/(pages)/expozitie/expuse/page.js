@@ -1,47 +1,41 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import ImagePainting from "../components/ImagePainting"
 import Sidebar from "../components/Sidebar"
 import { paintings } from "@/app/test-db/paintings"
+import { fetchPaintings } from "@/app/vercel-db/db"
 
 const Page = () => {
   const [searchTerm, setSearchTerm] = useState("")
   const [size, setSize] = useState("")
   const [category, setCategory] = useState("")
   const [price, setPrice] = useState("")
+  const [paintings, setPaintings] = useState([])
 
-  const filteredPaintings = paintings.filter(painting => {
-    let priceFilterPass = true
-    if (price) {
-      const [minPrice, maxPrice] = price.split("-").map(Number)
-      priceFilterPass = maxPrice
-        ? painting.price >= minPrice && painting.price <= maxPrice
-        : painting.price >= minPrice
+  useEffect(() => {
+    const fetchData = async () => {
+      const filters = { searchTerm, size, category, price }
+      const fetchedPaintings = await fetchPaintings(filters)
+      setPaintings(fetchedPaintings)
     }
 
-    return (
-      (searchTerm === "" ||
-        painting.title.toLowerCase().includes(searchTerm.toLowerCase())) &&
-      (size === "" || painting.size === size) &&
-      (category === "" || painting.category === category) &&
-      priceFilterPass
-    )
-  })
+    fetchData()
+  }, [searchTerm, size, category, price])
 
   return (
     <>
       <Sidebar
-        onSearchChange={value => setSearchTerm(value)}
-        onSizeChange={value => setSize(value)}
-        onCategoryChange={value => setCategory(value)}
-        onPriceChange={value => setPrice(value)}
+        onSearchChange={setSearchTerm}
+        onSizeChange={setSize}
+        onCategoryChange={setCategory}
+        onPriceChange={setPrice}
       />
-      {filteredPaintings.map(painting => (
+      {paintings.map(painting => (
         <ImagePainting
+          key={painting.id}
           src={painting.image}
           alt={painting.title}
-          key={painting.id}
         />
       ))}
     </>
