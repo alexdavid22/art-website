@@ -21,17 +21,17 @@ export default function Navbar() {
           </Link>
         </li>
         <li className="navbar-item">
-          <Link href="/contact" className="navbar-link">
+          <Link href="/constignatie" className="navbar-link">
             Constignatie
           </Link>
         </li>
         <li className="navbar-item">
-          <Link href="/contact" className="navbar-link">
+          <Link href="/istoria-artei" className="navbar-link">
             Istoria artei
           </Link>
         </li>
         <li className="navbar-item">
-          <Link href="/contact" className="navbar-link">
+          <Link href="/noutati" className="navbar-link">
             Noutati
           </Link>
         </li>

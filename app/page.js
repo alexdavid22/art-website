@@ -11,41 +11,46 @@ export default function Home() {
           <button className="hero-cta">Learn More</button>
         </div>
         <div className="section">
-          <h2 className="section-header">Section Header</h2>
+          <h2 className="section-header" style={{ color: "white" }}>
+            Bine ati venit
+          </h2>
           <div className="card">
+            <h1>Ce puteti vedea aici</h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              Vivamus arcu felis bibendum ut tristique et egestas. Potenti
-              nullam ac tortor vitae purus faucibus. Montes nascetur ridiculus
-              mus mauris vitae ultricies leo. Quis hendrerit dolor magna eget
-              est. Mauris in aliquam sem fringilla ut. Non quam lacus
-              suspendisse faucibus interdum posuere lorem ipsum dolor.
-              Ullamcorper velit sed ullamcorper morbi. Vulputate mi sit amet
-              mauris. Lorem sed risus ultricies tristique nulla aliquet enim
-              tortor at. A diam sollicitudin tempor id eu nisl nunc mi. Gravida
-              in fermentum et sollicitudin. In vitae turpis massa sed elementum
-              tempus egestas. Tellus id interdum velit laoreet id donec. Sit
-              amet mauris commodo quis imperdiet massa tincidunt. Augue mauris
-              augue neque gravida in fermentum et. Cras semper auctor neque
-              vitae tempus quam.
+              Aici puteți vedea o varietate de informații interesante și utile
+              despre locul nostru minunat. Cu ajutorul nostru, veți descoperi
+              frumusețea naturii, cultura locală bogată și opțiunile nelimitate
+              de divertisment. <br /> <br />
+              Indiferent dacă sunteți în căutarea aventurilor în aer liber sau
+              doriți să explorați atracțiile culturale, suntem aici pentru a vă
+              oferi informațiile de care aveți nevoie pentru a vă bucura la
+              maxim de călătoria dumneavoastră. <br />
+              <br />
+              Indiferent dacă sunteți pasionat de natură sau de artă, aici veți
+              găsi ceva care să vă fascineze. Puteți explora frumusețea
+              peisajelor naturale sau vă puteți pierde în lumea artei cu
+              colecția noastră impresionantă. În plus, avem numeroase evenimente
+              și activități planificate pentru a vă oferi o experiență
+              memorabilă. Haideți să începem călătoria împreună și să facem din
+              fiecare moment o aventură de neuitat!
             </p>
+
+            <br />
+
+            <h1>Tipuri de picturi</h1>
             <p>
-              Enim sed faucibus turpis in eu. Sem integer vitae justo eget magna
-              fermentum iaculis eu. Eu nisl nunc mi ipsum faucibus vitae
-              aliquet. Ultricies leo integer malesuada nunc vel. Velit laoreet
-              id donec ultrices tincidunt arcu non sodales neque. Pharetra massa
-              massa ultricies mi quis hendrerit dolor magna. Integer vitae justo
-              eget magna fermentum iaculis eu. Diam vulputate ut pharetra sit.
-              At in tellus integer feugiat scelerisque varius morbi enim.
-              Ultrices gravida dictum fusce ut placerat orci nulla pellentesque.
-              Phasellus vestibulum lorem sed risus ultricies tristique nulla
-              aliquet enim. Ipsum consequat nisl vel pretium lectus quam.
-              Viverra adipiscing at in tellus integer feugiat scelerisque. Id
-              aliquet risus feugiat in ante metus. Suspendisse in est ante in
-              nibh mauris cursus. Sed sed risus pretium quam vulputate dignissim
-              suspendisse in. Diam in arcu cursus euismod quis viverra. Ligula
-              ullamcorper malesuada proin libero nunc consequat.
+              În lumea artei, există o varietate de tipuri de picturi, fiecare
+              având propria sa frumusețe și semnificație. De la picturile
+              abstracte care vă invită să vă lăsați imaginația să zboare, până
+              la cele realiste care surprind fiecare detaliu cu precizie
+              uluitoare, există ceva pentru fiecare gust artistic. <br />
+              <br /> Descoperiți lumile vibrante și expresive create de artiști
+              talentați din întreaga lume. Fie că sunteți un iubitor al
+              impresionismului, al artei contemporane sau al picturilor clasice,
+              există multe de explorat și de apreciat în lumea picturilor.
+              Haideți să vă aventurați în această călătorie artistică și să vă
+              bucurați de diversitatea tipurilor de picturi care vă vor încânta
+              ochii și sufletul!
             </p>
           </div>
         </div>

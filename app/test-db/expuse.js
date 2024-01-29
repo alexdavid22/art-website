@@ -1,18 +1,21 @@
 export const paintings = [
   {
     id: 1,
-    image: "/images/aurelia/expuse/1.jpg",
+    painter: "painter1",
+    image:
+      "https://drive.google.com/uc?export=view&id=17eFfK3Tnx58Bemv5GTk4v9KsAfjNwkkO",
     title: "Trei frati",
-    category: "original",
+    category: "Original",
     description: "Tehnica: acrilic. Compoziție proprie",
     size: "mediu",
     price: 2000,
   },
   {
     id: 2,
+    painter: "painter1",
     image: "/images/aurelia/expuse/2.jpg",
     title: "Dragoste",
-    category: "reproducere",
+    category: 'Reproducere "Interpretata"',
     description:
       "Tehnica: acrilic. Reproducere după o compoziție accesibilă online. Autor interpretat",
     size: "mediu",
@@ -20,27 +23,30 @@ export const paintings = [
   },
   {
     id: 3,
+    painter: "painter1",
     image: "/images/aurelia/expuse/3.jpg",
     title: "Balet si flori",
-    category: "original",
+    category: "Original",
     description: "Tehnica: acrilic. Compoziție proprie",
     size: "mediu",
     price: 2000,
   },
   {
     id: 4,
+    painter: "painter1",
     image: "/images/aurelia/expuse/4.jpg",
     title: "Diversitate",
-    category: "original",
+    category: "Original",
     description: "Tehnica: acrilic. Compoziție proprie",
     size: "mediu",
     price: 2000,
   },
   {
     id: 5,
+    painter: "painter1",
     image: "/images/aurelia/expuse/5.jpg",
     title: "Madame",
-    category: "reproducere",
+    category: 'Reproducere "Interpretata"',
     description:
       "Tehnica: ulei. Reproducere după o compoziție accesibilă online. Autor interpretat",
     size: "mic",
@@ -48,9 +54,10 @@ export const paintings = [
   },
   {
     id: 6,
+    painter: "painter2",
     image: "/images/aurelia/expuse/6.jpg",
     title: "Trepte spre Rai",
-    category: "creatie",
+    category: "Creatie Inspirata",
     description:
       "Tehnica: ulei. Inspirat/interpretat după o compoziție accesibilă online. Tusa proprie",
     size: "mic",
@@ -58,9 +65,10 @@ export const paintings = [
   },
   {
     id: 7,
+    painter: "painter2",
     image: "/images/aurelia/expuse/7.jpg",
     title: "Femeia caleidoscop",
-    category: "creatie",
+    category: "Creatie Inspirata",
     description:
       "Tehnica: acrilic. Inspirat/interpretat după o compoziție accesibilă online. Tusa proprie",
     size: "mic",
@@ -68,9 +76,10 @@ export const paintings = [
   },
   {
     id: 8,
+    painter: "painter2",
     image: "/images/aurelia/expuse/8.jpg",
     title: "Monogamie",
-    category: "creatie",
+    category: "Creatie Inspirata",
     description:
       "Tehnica: acrilic. Inspirat/interpretat după o compoziție accesibilă online. Tusa proprie",
     size: "mic-mediu",
@@ -78,9 +87,10 @@ export const paintings = [
   },
   {
     id: 9,
+    painter: "painter2",
     image: "/images/aurelia/expuse/9.jpg",
     title: "Menestreli",
-    category: "reproducere",
+    category: 'Reproducere "Interpretata"',
     description:
       "Tehnica: ulei. Reproducere după o compoziție accesibilă online. Autor interpretat",
     size: "mic-mediu",
@@ -88,9 +98,10 @@ export const paintings = [
   },
   {
     id: 10,
+    painter: "painter2",
     image: "/images/aurelia/expuse/10.jpg",
     title: "Senzatii...",
-    category: "original",
+    category: "Original",
     description: "Tehnica: acrilic. Compoziție proprie",
     size: "mediu",
     price: 1800,

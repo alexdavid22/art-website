@@ -2,12 +2,20 @@ import ImagePainting from "../components/ImagePainting"
 import Sidebar from "../components/Sidebar"
 
 const Page = () => {
+  const imagePaths = []
+  const basePath = "/images/aurelia/vandute/"
+
+  for (let i = 1; i <= 10; i++) {
+    const imagePath = `${basePath}${i}.jpg`
+    imagePaths.push(imagePath)
+  }
+
   return (
     <>
       <Sidebar />
-      <ImagePainting src="/images/stil2/landscape.png" alt="Painting 1" />
-      <ImagePainting src="/images/stil2/portrait.png" alt="Painting 1" />
-      <ImagePainting src="/images/stil2/landscape.png" alt="Painting 1" />
+      {imagePaths.map((path, index) => (
+        <ImagePainting key={index} src={path} alt={`Painting ${index + 1}`} />
+      ))}
     </>
   )
 }
