@@ -8,7 +8,7 @@ export const paintings = [
     category: "Original",
     description: "Tehnica: acrilic. Compoziție proprie",
     size: "mediu",
-    price: 2000,
+    price: 4000,
   },
   {
     id: 2,
