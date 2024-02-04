@@ -6,11 +6,26 @@ export default function PaintForm() {
   // Initialize state for each form field
   const [painter, setPainter] = useState("")
   const [primaryImage, setPrimaryImage] = useState("")
-  const [subImage1, setSubImage1] = useState("")
+  {
+    /*  const [subImage1, setSubImage1] = useState("") */
+  }
+  const [subImages, setSubImages] = useState([""]) // Initialize with an array containing a single empty string
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [size, setSize] = useState("")
   const [price, setPrice] = useState("")
+
+  // Handle change in sub-image input fields
+  const handleSubImageChange = (e, index) => {
+    const newSubImages = [...subImages]
+    newSubImages[index] = e.target.value
+    setSubImages(newSubImages)
+  }
+
+  // Handle click on "Add sub-image" button
+  const handleAddSubImage = () => {
+    setSubImages([...subImages, ""])
+  }
 
   // Handle form submission
   const handleSubmit = async e => {
@@ -20,7 +35,7 @@ export default function PaintForm() {
     const formData = {
       painter,
       primaryImage,
-      subImage1,
+      subImages, // before it was subImage1
       title,
       description,
       size,
@@ -66,12 +81,30 @@ export default function PaintForm() {
         onChange={e => setPrimaryImage(e.target.value)}
         placeholder="Primary Image URL"
       />
+
+      {/*
       <input
         type="text"
         value={subImage1}
         onChange={e => setSubImage1(e.target.value)}
         placeholder="Sub Image 1 URL"
       />
+      */}
+
+      {subImages.map((subImage, index) => (
+        <input
+          key={index}
+          type="text"
+          value={subImage}
+          onChange={e => handleSubImageChange(e, index)}
+          placeholder={`Sub Image ${index + 1} URL`}
+        />
+      ))}
+
+      <button type="button" onClick={handleAddSubImage}>
+        Add sub-image
+      </button>
+
       <input
         type="text"
         value={title}

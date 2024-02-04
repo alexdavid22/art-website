@@ -37,7 +37,6 @@ export default function AvatarUploadPage() {
           Blob url: <a href={blob.url}>{blob.url}</a>
         </div>
       )}
-      <img src={blob.url} alt="" />
     </>
   )
 }
