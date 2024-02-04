@@ -16,13 +16,13 @@ export default function Navbar() {
           </Link>
         </li>
         <li className="navbar-item">
-          <Link href="/expozitie/expuse" className="navbar-link">
+          <Link href="/expozitie/Aurelia" className="navbar-link">
             Expozitie cu vanzare
           </Link>
         </li>
         <li className="navbar-item">
-          <Link href="/constignatie" className="navbar-link">
-            Constignatie
+          <Link href="/adaugare" className="navbar-link">
+            Adaugare pictori si picturi
           </Link>
         </li>
         <li className="navbar-item">

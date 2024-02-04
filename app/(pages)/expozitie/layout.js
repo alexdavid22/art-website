@@ -1,17 +1,19 @@
+import { paintings } from "@/app/test-db/expuse"
 import "../page-styles.css"
 import Link from "next/link"
 
 export default function Layout({ children }) {
+  // Create a unique list of painter names
+  const painterNames = Array.from(new Set(paintings.map(p => p.painter)))
+
   return (
     <>
       <div className="dn-btn-links">
-        <h1>Aurelia Stepan</h1>
-        <Link href="/expozitie/expuse">
-          <button>Expuse</button>
-        </Link>
-        <Link href="/expozitie/vandute">
-          <button>Vandute</button>
-        </Link>
+        {painterNames.map(painter => (
+          <Link href={`/expozitie/${painter}`} key={painter}>
+            <button key={painter}>{painter}</button>
+          </Link>
+        ))}
       </div>
 
       {children}

@@ -1,9 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import ImagePainting from "../components/ImagePainting"
-import Sidebar from "../components/Sidebar"
+import ImagePainting from "../../../components/expozitie/ImagePainting"
+import Sidebar from "../../../components/expozitie/Sidebar"
 import { paintings } from "@/app/test-db/expuse"
+import PaintersList from "@/app/components/expozitie/painter-list"
 
 const Page = () => {
   const [searchTerm, setSearchTerm] = useState("")
@@ -40,6 +41,7 @@ const Page = () => {
         onCategoryChange={value => setCategory(value)}
         onPriceChange={value => setPrice(value)}
       />
+      <PaintersList />
       {filteredPaintings.map(painting => (
         <ImagePainting
           src={painting.image}

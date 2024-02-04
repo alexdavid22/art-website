@@ -1,5 +1,5 @@
-import ImagePainting from "../components/ImagePainting"
-import Sidebar from "../components/Sidebar"
+import ImagePainting from "../../../components/expozitie/ImagePainting"
+import Sidebar from "../../../components/expozitie/Sidebar"
 
 const Page = () => {
   const imagePaths = []

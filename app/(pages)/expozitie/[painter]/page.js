@@ -1,15 +1,22 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import ImagePainting from "../components/ImagePainting"
-import Sidebar from "../components/Sidebar"
+import ImagePainting from "../../../components/expozitie/ImagePainting"
+import Sidebar from "@/app/components/expozitie/Sidebar"
 import { paintings as allPaintings } from "@/app/test-db/expuse"
 import Link from "next/link"
+
+const getSizeCategory = sizeCm => {
+  const [width, height] = sizeCm.split("x").map(Number)
+  const area = width * height
+  if (area <= 2000) return "mic"
+  if (area <= 5000) return "mediu"
+  return "mare"
+}
 
 const PainterPage = ({ params }) => {
   const [searchTerm, setSearchTerm] = useState("")
   const [size, setSize] = useState("")
-  const [category, setCategory] = useState("")
   const [price, setPrice] = useState("")
   const [filteredPaintings, setFilteredPaintings] = useState([])
 
@@ -22,6 +29,7 @@ const PainterPage = ({ params }) => {
       } else {
         ;[minPrice, maxPrice] = price.split("-").map(Number)
       }
+      const sizeCategory = getSizeCategory(painting.sizeCm)
       return (
         painting.painter === params.painter &&
         (price
@@ -29,31 +37,29 @@ const PainterPage = ({ params }) => {
             ? painting.price >= minPrice && painting.price <= maxPrice
             : painting.price >= minPrice
           : true) &&
-        (category === "" ||
-          painting.category.toLowerCase().includes(category)) &&
         (searchTerm === "" ||
           painting.title.toLowerCase().includes(searchTerm)) &&
-        (size === "" || painting.size === size)
+        (size === "" || sizeCategory === size)
       )
     })
 
     setFilteredPaintings(newFilteredPaintings)
-  }, [params.painter, price, category, searchTerm, size])
+  }, [params.painter, price, searchTerm, size])
 
   return (
     <>
       <Sidebar
         onSearchChange={setSearchTerm}
         onSizeChange={setSize}
-        onCategoryChange={setCategory}
         onPriceChange={setPrice}
       />
+
       {filteredPaintings.length > 0 ? (
         filteredPaintings.map(painting => (
-          <Link href={`./${params.painter}/${painting.id}`}>
+          <Link href={`./${params.painter}/${painting.id}`} key={painting.id}>
             <ImagePainting
               key={painting.id}
-              src={painting.image}
+              src={painting.imgSmall}
               alt={painting.title}
               title={painting.title}
               category={painting.category}
