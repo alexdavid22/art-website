@@ -1,48 +1,76 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useRef } from "react"
 
 export default function PaintForm() {
-  // Initialize state for each form field
   const [painter, setPainter] = useState("")
-  const [primaryImage, setPrimaryImage] = useState("")
-  {
-    /*  const [subImage1, setSubImage1] = useState("") */
-  }
-  const [subImages, setSubImages] = useState([""]) // Initialize with an array containing a single empty string
+  const [subImages, setSubImages] = useState([null]) // Initialize with null for file inputs
   const [title, setTitle] = useState("")
   const [description, setDescription] = useState("")
   const [size, setSize] = useState("")
   const [price, setPrice] = useState("")
 
-  // Handle change in sub-image input fields
-  const handleSubImageChange = (e, index) => {
-    const newSubImages = [...subImages]
-    newSubImages[index] = e.target.value
-    setSubImages(newSubImages)
+  const primaryImageFileRef = useRef(null)
+  const subImageFileRefs = useRef([])
+
+  // Handle sub-image input fields change
+  const handleSubImageChange = index => e => {
+    subImageFileRefs.current[index] = e.target.files[0] // Directly storing the file object
   }
 
   // Handle click on "Add sub-image" button
   const handleAddSubImage = () => {
-    setSubImages([...subImages, ""])
+    setSubImages([...subImages, null]) // Just to trigger a new input field
+    subImageFileRefs.current.push(null)
   }
 
   // Handle form submission
   const handleSubmit = async e => {
-    e.preventDefault() // Prevent default form submission behavior
+    e.preventDefault()
 
-    // Form data to be sent
+    // Upload primary image
+    const primaryImageFile = primaryImageFileRef.current.files[0]
+    const primaryImageResponse = await fetch(
+      `/api/upload-file?filename=${primaryImageFile.name}`,
+      {
+        method: "POST",
+        body: primaryImageFile,
+      }
+    )
+    const primaryImageBlob = await primaryImageResponse.json()
+    const primaryImageUrl = primaryImageBlob.url // Directly use this URL
+
+    // Upload sub-images
+    const subImageUrls = await Promise.all(
+      subImageFileRefs.current.map(async file => {
+        if (!file) return null // Skip if no file is selected
+        const subImageResponse = await fetch(
+          `/api/upload-file?filename=${file.name}`,
+          {
+            method: "POST",
+            body: file,
+          }
+        )
+        const subImageBlob = await subImageResponse.json()
+        return subImageBlob.url // Collect URLs
+      })
+    )
+
+    // Filter out any null values in case there are empty slots
+    const filteredSubImageUrls = subImageUrls.filter(url => url !== null)
+
+    // Construct form data with updated image URLs
     const formData = {
       painter,
-      primaryImage,
-      subImages, // before it was subImage1
+      primaryImage: primaryImageUrl,
+      subImages: filteredSubImageUrls,
       title,
       description,
       size,
       price,
     }
 
-    // Fetch API to send form data to the server
+    // Submit form data
     try {
       const response = await fetch("/api/database", {
         method: "POST",
@@ -55,18 +83,17 @@ export default function PaintForm() {
       if (response.ok) {
         const result = await response.json()
         console.log("Success:", result)
-        // Handle success - for example, showing a success message or clearing the form
+        // Optionally reset the form or provide user feedback
       } else {
         console.error("Error:", response.statusText)
-        // Handle error - for example, showing an error message
+        // Handle HTTP error responses
       }
     } catch (error) {
       console.error("Error:", error)
-      // Handle fetch error
+      // Handle network errors
     }
   }
 
-  // The form JSX
   return (
     <form onSubmit={handleSubmit} style={{ marginTop: "150px" }}>
       <input
@@ -76,28 +103,18 @@ export default function PaintForm() {
         placeholder="Painter"
       />
       <input
-        type="text"
-        value={primaryImage}
-        onChange={e => setPrimaryImage(e.target.value)}
-        placeholder="Primary Image URL"
+        type="file"
+        ref={primaryImageFileRef}
+        onChange={() => {}}
+        placeholder="Primary Image"
       />
 
-      {/*
-      <input
-        type="text"
-        value={subImage1}
-        onChange={e => setSubImage1(e.target.value)}
-        placeholder="Sub Image 1 URL"
-      />
-      */}
-
-      {subImages.map((subImage, index) => (
+      {subImages.map((_, index) => (
         <input
           key={index}
-          type="text"
-          value={subImage}
-          onChange={e => handleSubImageChange(e, index)}
-          placeholder={`Sub Image ${index + 1} URL`}
+          type="file"
+          onChange={handleSubImageChange(index)}
+          placeholder={`Sub Image ${index + 1}`}
         />
       ))}
 
